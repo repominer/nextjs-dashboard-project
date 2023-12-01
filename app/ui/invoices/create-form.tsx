@@ -11,7 +11,13 @@ import { Button } from '@/app/ui/button';
 import { createInvoice } from '@/app/lib/actions'
 import { useFormState } from 'react-dom';
 
-export default function Form({ customers }: { customers: CustomerField[] }) {
+type FormProps = {
+  customers: CustomerField[];
+  customerID: any[];  // Consider defining a more specific type than `any[]`
+};
+
+export default function Form({ customers, customerID }: FormProps) {
+
   const initialState = {message: null, errors: {}};
   const [state, dispatch] = useFormState(createInvoice, initialState);
 
